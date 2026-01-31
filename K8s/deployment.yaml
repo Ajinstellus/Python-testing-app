@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maria-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: maria
+  template:
+    metadata:
+      labels:
+        app: maria
+    spec:
+      containers:
+      - name: flask-app
+        image: ajin0809/ajinapp  
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
+        resources:
+          requests:
+            cpu: "200m"
+          limits:
+            cpu: "500m"
+
